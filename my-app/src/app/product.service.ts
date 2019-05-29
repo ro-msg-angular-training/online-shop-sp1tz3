@@ -1,23 +1,78 @@
 import { Injectable } from '@angular/core';
 import { Product } from './product';
-import { PRODUCTS } from './mock-products';
 import { Observable, of} from 'rxjs';
-import { MessageService } from './message.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+
+
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor(private messageService: MessageService) { }
+
+  constructor(private http: HttpClient) { }
+
+  private productsURL = '/api/products';
 
   getProducts(): Observable<Product[]>{
-    this.messageService.add('ProductService: fetched products');
-    return of(PRODUCTS);
+    return this.http.get<Product[]>(this.productsURL)
+    .pipe(
+      catchError(this.handleError<Product[]>('getProducts', []))
+    );
   }
 
   getProduct(id: number): Observable<Product>{
-    this.messageService.add('HeroService: fetched hero id=${id}');
-    return of(PRODUCTS.find(product => product.id === id));
+    const url = `${this.productsURL}/${id}`;
+    return this.http.get<Product>(url).pipe(
+      catchError(this.handleError<Product>('getProduct id=${id}'))
+    )
   }
+
+  updateProduct(product: Product): Observable<any>{
+    return this.http.put(this.productsURL, product, httpOptions)
+      .pipe(
+        catchError(this.handleError<any>('updateProduct'))
+      )
+  }
+
+  addProduct(product: Product): Observable<Product>{
+    return this.http.post<Product>(this.productsURL, product, httpOptions)
+      .pipe(
+        catchError(this.handleError<Product>('addProduct'))
+      )
+  }
+
+  deleteProduct(product:Product|number): Observable<Product>{
+    const id = typeof product ==='number'?product : product.id;
+    const url = `${this.productsURL}/${id}`;
+
+    return this.http.delete<Product>(url, httpOptions)
+      .pipe(
+        catchError(this.handleError<Product>('deleteProduct'))
+      )
+  }
+
+  searchProducts(term: string): Observable<Product[]>{
+    if(!term.trim())
+      return of([]);
+      return this.http.get<Product[]>(`${this.productsURL}/?name=${term}`).pipe(
+        catchError(this.handleError<Product[]>('searchHeroes', []))
+      );
+  }
+
+
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+   
+      console.error(error);
+   
+      return of(result as T);
+    };
+  }
+
 }

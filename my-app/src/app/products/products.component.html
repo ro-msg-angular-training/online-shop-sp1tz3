@@ -4,9 +4,21 @@
       <a routerLink="/detail/{{product.id}}">
         {{product.name}}
       </a>
+      <button class="delete" title="delete product"
+        (click) = "delete(product)">x</button>
     </li>
 </ul>
-
+<div>
+  <label>Product name:
+    <input #productName />
+  </label>
+  <label>Product price:
+    <input #productPrice />
+  </label>
+  <button (click)="add(productName.value, productPrice.value); productName.value=''">
+    add
+  </button>
+</div>
 
 
 
