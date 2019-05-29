@@ -12,10 +12,41 @@
   <label>Product name:
     <input #productName />
   </label>
+  <br/>
+  <label>Product description:
+    <input #productDescription />
+  </label>
+  <br/>
   <label>Product price:
     <input #productPrice />
   </label>
-  <button (click)="add(productName.value, productPrice.value); productName.value=''">
+  <br/>
+  <label>Product weight:
+    <input #productWeight />
+  </label>
+  <br/>
+  <label>Product category:
+    <input #productCategory />
+  </label>
+  <br/>
+  <label>Product supplier:
+    <input #productSupplier />
+  </label>
+  <br/>
+  <label>Product imageUrl:
+    <input #productImageUrl />
+  </label>
+  <br/>
+  <button (click)=
+  "add(productName.value,productDescription.value,productPrice.value,productWeight.value,productCategory.value,productSupplier.value,productImageUrl.value);
+  productName.value=''; 
+  productDescription.value='';
+  productPrice.value= '';
+  productWeight.value='';
+  productCategory.value='';
+  productSupplier.value='';
+  productImageUrl.value='';
+  ">
     add
   </button>
 </div>

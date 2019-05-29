@@ -27,10 +27,10 @@ export class ProductsComponent implements OnInit {
     this.productService.deleteProduct(product).subscribe();
   }
 
-  add(name: string, price: number): void {
+  add(name: string, description: string, price: number, weight: number, category: number, supplier: number, imageUrl: string): void {
     name = name.trim();
     if (!name) { return; }
-    this.productService.addProduct({ name, price } as Product)
+    this.productService.addProduct({ name, description, price, weight, category, supplier, imageUrl } as Product)
       .subscribe(product => {
         this.products.push(product);
       });
