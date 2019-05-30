@@ -57,15 +57,6 @@ export class ProductService {
       )
   }
 
-  searchProducts(term: string): Observable<Product[]>{
-    if(!term.trim())
-      return of([]);
-      return this.http.get<Product[]>(`${this.productsURL}/?name=${term}`).pipe(
-        catchError(this.handleError<Product[]>('searchHeroes', []))
-      );
-  }
-
-
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
    

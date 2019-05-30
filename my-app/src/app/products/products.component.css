@@ -19,7 +19,7 @@
     border-radius: 4px;
   }
   .products li.selected:hover {
-    background-color: #BBD8DC !important;
+    background-color: rgb(220, 241, 22) !important;
     color: white;
   }
   .products li:hover {
@@ -32,24 +32,20 @@
     top: -3px;
   }
 
-  .button {
-    background-color: #eee;
+  button {
+    background-color: greenyellow;
     border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
     cursor: pointer;
     cursor: hand;
     font-family: Arial;
   }
    
-  .button:hover {
+  button:hover {
     background-color: #cfd8dc;
   }
    
-  .button.delete {
-    position: relative;
-    left: 194px;
-    top: -32px;
-    background-color: gray !important;
+  button.delete {
+    position: border-right !important;
+    background-color: red !important;
     color: white;
   }

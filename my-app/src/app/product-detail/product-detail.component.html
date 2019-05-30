@@ -1,41 +1,51 @@
 <div *ngIf="product">
-    <h2>{{product.name | uppercase}} Details</h2>
-         <div><span>id: </span>{{product.id}}</div>
-         <div>
-           <label>name:
-             <input [(ngModel)]="product.name" placeholder="name"/>
-           </label>
-         </div>
-         <div>
-          <label>description:
-            <input [(ngModel)]="product.description" placeholder="description"/>
-          </label>
-        </div>
+  <form [formGroup]="productForm" (ngSubmit) = "save()">
+      <div class="field">
+          <p>Name: {{product.name}}</p> 
+          <input type="text" formControlName="name" placeholder={{product.name}} name="name" required>
+      </div>
+      <div class="field">
         <div>
-          <label>price:
-            <input [(ngModel)]="product.price" placeholder="price"/>
-          </label>
+          <p>Description: {{product.description}}</p>
         </div>
+        <input type="text" formControlName="description" placeholder={{product.description}} name="description">
+      </div>
+      <div class="field">
         <div>
-          <label>weight:
-            <input [(ngModel)]="product.weight" placeholder="weight"/>
-          </label>
+          <p>Price: {{product.price}}(euro)</p>
         </div>
+        <input type="number" formControlName="price" placeholder={{product.price}} name="price" required>
+      </div>
+      <div class="field">
         <div>
-          <label>category:
-            <input [(ngModel)]="product.category" placeholder="category"/>
-          </label>
+        <p>Weight: {{product.weight}}(kg)</p>
         </div>
+        <input type="number" formControlName="weight" placeholder={{product.weight}} name="weight" required>
+      </div>
+      <div class="field">
         <div>
-          <label>supplier:
-            <input [(ngModel)]="product.supplier" placeholder="supplier"/>
-          </label>
+        <p>Category: {{product.category}}</p>
         </div>
+        <input type="number" formControlName="category" placeholder={{product.category}} name="category" required>
+      </div>
+      <div class="field">
         <div>
-          <label>imageUrl:
-            <input [(ngModel)]="product.imageUrl" placeholder="imageUrl"/>
-          </label>
+        <p>Supplier: {{product.supplier}}</p>
         </div>
+        <input type="number" formControlName="supplier" placeholder={{product.supplier}} name="supplier" required>
+      </div>
+      <div class="field">
+        <div>
+        <p>ImageUrl: {{product.imageUrl}}</p>
+        </div>
+        <input type="text" formControlName="imageUrl" placeholder={{product.imageUrl}} name="imageUrl">
+      </div>
+      </form>
 </div>
+<div>
+    <button type="submit" class="btn btn-success">Save</button>
+</div>
+<br/>
 <button (click)="goBack()">Back</button>
-<button (click)="save()">Save</button>
+
+

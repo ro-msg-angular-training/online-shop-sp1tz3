@@ -1,8 +1,9 @@
 /* AppComponent's private CSS styles */
 h1 {
-    font-size: 1.2em;
-    color: #999;
+    font-size: 7em;
+    color: rgb(13, 61, 196);
     margin-bottom: 0;
+    margin-top:0;
   }
   h2 {
     font-size: 2em;
