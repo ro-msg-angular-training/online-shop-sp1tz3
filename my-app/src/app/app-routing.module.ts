@@ -5,11 +5,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 
+
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   {path: 'products', component: ProductsComponent},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'detail/:id', component: ProductDetailComponent}
+  {path: 'detail/:id', component: ProductDetailComponent},
 ];
 
 @NgModule({
