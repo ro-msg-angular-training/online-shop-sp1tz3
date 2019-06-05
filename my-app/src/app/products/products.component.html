@@ -1,54 +1,23 @@
-<h2>My Products</h2>
+<br/>
+<br/>
+<nav>
+    <a class="cart" routerLink="/cart">Shopping Cart</a>
+</nav>
+
+<h2>All Products</h2>
 <ul class= "products">
-    <li *ngFor="let product of products">
-      <a routerLink="/detail/{{product.id}}">
+    <li class="selected" *ngFor="let product of products">
+      <a class="selectedText" routerLink="/detail/{{product.id}}">
         {{product.name}}
       </a>
       <button class="delete" title="delete product"
-        (click) = "delete(product)">Click dreapta delet..</button>
+        (click) = "delete(product)">Remove Product</button>
     </li>
 </ul>
 <div>
-  <label>Product name:
-    <input #productName />
-  </label>
-  <br/>
-  <label>Product description:
-    <input #productDescription />
-  </label>
-  <br/>
-  <label>Product price:
-    <input #productPrice />
-  </label>
-  <br/>
-  <label>Product weight:
-    <input #productWeight />
-  </label>
-  <br/>
-  <label>Product category:
-    <input #productCategory />
-  </label>
-  <br/>
-  <label>Product supplier:
-    <input #productSupplier />
-  </label>
-  <br/>
-  <label>Product imageUrl:
-    <input #productImageUrl />
-  </label>
-  <br/>
-  <button (click)=
-  "add(productName.value,productDescription.value,productPrice.value,productWeight.value,productCategory.value,productSupplier.value,productImageUrl.value);
-  productName.value=''; 
-  productDescription.value='';
-  productPrice.value= '';
-  productWeight.value='';
-  productCategory.value='';
-  productSupplier.value='';
-  productImageUrl.value='';
-  ">
-    add
-  </button>
+  <a role="button" class="add"
+  href="http://localhost:4200/products/add">Add a
+  product</a>
 </div>
 
 

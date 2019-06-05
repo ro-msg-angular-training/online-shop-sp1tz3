@@ -1,51 +1,54 @@
 .selected {
-    background-color: #CFD8DC !important;
+    background-color: greenyellow !important;
     color: white;
   }
-  .products {
+.selectedText{
+  color: brown;
+  text-align-last: auto;
+  text-transform: capitalize;
+  font-size: 20px;
+}
+.products {
     margin: 0 0 2em 0;
     list-style-type: none;
     padding: 0;
-    width: 15em;
+    width: 20em;
   }
-  .products li {
+.products li {
     cursor: pointer;
     position: relative;
     left: 0;
-    background-color: #EEE;
+    background-color: green;
     margin: .5em;
     padding: .3em 0;
     height: 1.6em;
     border-radius: 4px;
   }
-  .products li.selected:hover {
+.products li.selected:hover {
     background-color: rgb(220, 241, 22) !important;
-    color: white;
-  }
-  .products li:hover {
-    color: #607D8B;
-    background-color: #DDD;
-    left: .1em;
-  }
-  .products .text {
-    position: relative;
-    top: -3px;
-  }
+}
+.products .delete {
+  cursor: crosshair;
+  background-color: red;
+  color: white;
+  position: absolute;
+  right: 0px;
+}
+.add{
+  background-color: aqua;
+  font: italic 30px Arial;
+  border-top: 5px solid orange;
+  border-right: 5px solid orange;
+  border-bottom: 5px solid orange;
+  border-left: 5px solid orange;
+}
 
-  button {
-    background-color: greenyellow;
-    border: none;
-    cursor: pointer;
-    cursor: hand;
-    font-family: Arial;
-  }
-   
-  button:hover {
-    background-color: #cfd8dc;
-  }
-   
-  button.delete {
-    position: border-right !important;
-    background-color: red !important;
-    color: white;
-  }
+.cart{
+  font: bold 30px Arial;
+  background-color: yellow;
+  border-top: 5px solid #CCCCCC;
+  border-right: 5px solid #333333;
+  border-bottom: 5px solid #333333;
+  border-left: 5px solid #CCCCCC;
+}
+

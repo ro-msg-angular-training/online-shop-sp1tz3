@@ -1,9 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, NgModule } from '@angular/core';
 import { Product } from '../product';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../product.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { CategoryService } from '../category.service';
+import { SupplierService } from '../supplier.service';
+import { Category } from '../category';
+import { Supplier } from '../supplier';
+
 
 @Component({
   selector: 'app-product-detail',
@@ -14,15 +19,23 @@ export class ProductDetailComponent implements OnInit {
   @Input() product: Product
 
   productForm: FormGroup;
+  categories: Category[];
+  suppliers: Supplier[];
+  
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
+    private categoryService: CategoryService,
+    private supplierService: SupplierService,
     private location: Location
   ) { }
 
   ngOnInit() {
     this.getProduct();
+    this.getCategories();
+    this.getSuppliers();
+    
     this.productForm = new FormGroup({
       name: new FormControl(''),
       description: new FormControl(''),
@@ -32,6 +45,7 @@ export class ProductDetailComponent implements OnInit {
       supplier: new FormControl(''),
       imageUrl: new FormControl('')
     });
+
   }
 
   getProduct(): void{
@@ -74,5 +88,17 @@ export class ProductDetailComponent implements OnInit {
       if(this.productForm.value.supplier<1||this.productForm.value.supplier>3)
         valid = false;
       return valid;
+  }
+
+  getCategories(){
+    this.categoryService.getCategories().subscribe(
+      categories => this.categories = categories 
+    );
+  }
+
+  getSuppliers(){
+    this.supplierService.getSuppliers().subscribe(
+      suppliers => this.suppliers = suppliers
+    )
   }
 }

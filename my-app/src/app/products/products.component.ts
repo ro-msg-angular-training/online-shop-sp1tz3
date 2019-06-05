@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 
@@ -6,6 +6,9 @@ import { ProductService } from '../product.service';
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
+})
+@Injectable({
+  providedIn: 'root'
 })
 export class ProductsComponent implements OnInit {
 

@@ -26,13 +26,21 @@
         <div>
         <p>Category: {{product.category}}</p>
         </div>
-        <input type="number" formControlName="category" placeholder={{product.category}} name="category" required>
+        <select [(ngModel)]="product.category" formControlName="category">
+        <option *ngFor="let category of categories" value="{{category.id}}">
+          {{category.name}}
+        </option>
+      </select>
       </div>
       <div class="field">
         <div>
         <p>Supplier: {{product.supplier}}</p>
         </div>
-        <input type="number" formControlName="supplier" placeholder={{product.supplier}} name="supplier" required>
+        <select [(ngModel)]="product.supplier" formControlName="supplier">
+          <option *ngFor="let supplier of suppliers" value="{{supplier.id}}">
+            {{supplier.name}}
+          </option>
+        </select>
       </div>
       <div class="field">
         <div>
@@ -43,10 +51,11 @@
       </form>
 </div>
 <br/>
-<button (click)="save()">Save</button>
+<button class="saveButton"(click)="save()">Save</button>
 <br/>
 <br/>
-<button (click)="goBack()">Back</button>
+<button class="backButton" (click)="goBack()">Back</button>
+
 
 
 
